@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('home',function(){
+Route::get('test',function(){
 	return view('samplepage');
 });
+Route::get('home',"PagesController@homepage");
+Route::get('novel',"PagesController@novel");
+Route::get('article',"PagesController@article");
