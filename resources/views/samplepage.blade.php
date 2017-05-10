@@ -14,6 +14,8 @@ body {
 .container {
 
     text-align: center;
+    width:100%;
+    height:100%;
     display: table-cell;
     vertical-align: middle;
     background-image: url("/img/background.jpg")!important;
@@ -46,115 +48,112 @@ body {
 
 
 
-<div class="ui bottom thin sidebar menu">
-    <a class="item create">
-      <i class="write icon"></i>
-      Create New Project
+<div class="ui grey inverted vertical sidebar labeled icon menu">
+    <a class="item" href="\home">
+      <i class="home icon"></i>
+      Home
+    </a>
+    <a class="active item" data-tab="overview">
+      <i class="book icon"></i>
+      Overview
+    </a>
+    <a class="item" data-tab="characters">
+      <i class="street view icon"></i>
+      Characters
+    </a>
+    <a class="item" data-tab="locations">
+      <i class="marker icon"></i>
+      Locations
+    </a>
+    <a class="item" data-tab="scenes">
+      <i class="unhide icon"></i>
+      Scenes
+    </a>
+    <a class="item" data-tab="histories">
+      <i class="wait icon"></i>
+      Histories
+    </a>
+    <a class="item" data-tab="items">
+      <i class="diamond icon"></i>
+      Items
+    </a>
+    <a class="item" data-tab="brainstorm">
+      <i class="spinner icon"></i>
+      Brain Storm
+    </a>
+    <a class="item delete">
+      <i class="trash icon"></i>
+      Delete
     </a>
   </div>
 
-  <!-- <div class="pusher"> -->
-    <!-- Site content !-->
 
  <div class="container pusher">
  <div class="container_center">
-   
-
-  <img class="ui top aligned centered tiny image" src="/img/q.png"></img>
- <!-- start of container_center -->
-<div class="ui link cards">
-
-
-  <div class="card">
-<!--     <div class="image">
-      <img src="/images/avatar2/large/matthew.png">
-    </div> -->
-    <div class="content">
-      <div class="header">Title:</div>
-      <div class="meta">
-        <a>type(novel/article)</a>
-      </div>
-      <p class="description">
-        Desciption of the novel. 
-      </p>
-    </div>
-    <div class="extra content">
-      <span class="right floated">
-        <i class="wait icon"></i>
-        Created date<br>a
-      </span>
-      <span class="left floated">
-        <i class="write icon"></i>
-        Last Update<br>a
-      </span>
-    </div>
-  </div>
+   <!-- begin of container_center -->
+   <div class="ui bottom attached active tab segment" data-tab="overview">
+  overview
+</div>
+<div class="ui bottom attached tab segment" data-tab="characters">
+  characters
+</div>
+<div class="ui bottom attached tab segment" data-tab="locations">
+  locations
+</div>
+<div class="ui bottom attached tab segment" data-tab="scenes">
+  scenes
+</div>
+<div class="ui bottom attached tab segment" data-tab="histories">
+  histories
+</div>
+<div class="ui bottom attached tab segment" data-tab="items">
+  items
+</div>
+<div class="ui bottom attached tab segment" data-tab="brainstorm">
+  brain storm
 </div>
 <!-- end of container_center -->         
   </div>
  </div>
 
- <!-- modal -->
- <div class="ui modal">
-  <i class="close icon"></i>
-  <div class="header">
-    Create New Project
-  </div>
-  <div class="content">
-    <!-- Form Area begin -->
-    <form class="ui form">
-  <div class="fields">
-  <div class="twelve wide field">
-    <label>Title</label>
-    <input name="first-name" placeholder="First Name" type="text">
-  </div>
-  <div class="two wide field">
-      <label>Type</label>
-      <div class="ui selection dropdown">
-          <input name="type" type="hidden">
-          <i class="dropdown icon"></i>
-          <div class="default text">Type</div>
-          <div class="menu">
-              <div class="item" data-value="1">Novel</div>
-              <div class="item" data-value="0">Article</div>
-          </div>
-      </div>
-  </div>
-  </div>
-   <div class="sixteen wide field">
-    <label>Description</label>
-    <textarea></textarea>
-  </div>
-</form>
-    <!-- Form Area end -->
+
+ <!-- Deleting -->
+ <div class="ui basic modal">
+  <div class="ui icon header">
+    <i class="trash icon"></i>
+    <br>
+    <h2>Are you sure you want to delete this book?</h2>
   </div>
   <div class="actions">
-    <div class="ui black deny button">
+    <div class="ui red basic cancel inverted button">
+      <i class="remove icon"></i>
       Cancel
     </div>
-    <div class="ui positive right labeled icon button">
-      Create
-      <i class="checkmark icon"></i>
+    <div class="ui red ok inverted button">
+      <i class="trash icon"></i>
+      Delete
     </div>
   </div>
 </div>
+
 @stop
 
 @section('js')
 $(document).mousemove(function(event){
-    if(event.pageY>$('.container').height()-30){
+    if(event.pageX<30){
     $('.ui.sidebar').sidebar('setting', 'transition', 'push').sidebar('show');
 }
-  if(event.pageY<$('.container').height()-70){
+  if(event.pageX>300){
     $('.ui.sidebar').sidebar('setting', 'transition', 'push').sidebar('hide');
 }
   
 });
 
-$('.create').on('click',function(){
-  $('.ui.modal').modal('show');
+$('.delete').on('click',function(){
+  $('.ui.basic.modal').modal('show');
 });
 
 $('.dropdown').dropdown();
+$('.menu .item').tab();
 
 @stop
