@@ -65,10 +65,7 @@ body {
 <div class="ui link cards">
 
 
-  <div class="card">
-<!--     <div class="image">
-      <img src="/images/avatar2/large/matthew.png">
-    </div> -->
+  <div class="card editpage">
     <div class="content">
       <div class="header">Title:</div>
       <div class="meta">
@@ -89,6 +86,7 @@ body {
       </span>
     </div>
   </div>
+
 </div>
 <!-- end of container_center -->         
   </div>
@@ -153,6 +151,10 @@ $(document).mousemove(function(event){
 
 $('.create').on('click',function(){
   $('.ui.modal').modal('show');
+});
+
+$('.editpage').on('click',function(){
+  location.href = "/novel";
 });
 
 $('.dropdown').dropdown();
