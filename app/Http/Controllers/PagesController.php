@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
+use Request;
 
 use App\Http\Requests;
+use App\Book;
 
 class PagesController extends Controller
 {
@@ -24,12 +26,13 @@ class PagesController extends Controller
 
     public function test(){
         $books = \App\Book::all();
+        // dd($books);
     	return view('samplepage',compact('books'));
     }
 
     public function create(){
-        $input = Requests::all();
-
-        return $input;
+        $input = Request::all();
+        Book::create($input);
+        return redirect('test');
     }
 }

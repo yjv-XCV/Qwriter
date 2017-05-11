@@ -8,7 +8,8 @@ class Book extends Model
 {
     protected $fillable = [
     	'title',
-    	'type'
+    	'type',
+    	'description'
     ];
 
     public function cards(){

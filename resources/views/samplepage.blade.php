@@ -39,6 +39,10 @@ body {
   margin:auto;
 }
 
+.kright{
+  text-align:right;
+}
+
 @stop
 
 @section('content')
@@ -63,7 +67,7 @@ body {
   <img class="ui top aligned centered tiny image" src="/img/q.png"></img>
  <!-- start of container_center -->
 <div class="ui link cards">
-@if(is_null($books))
+@if($books->isEmpty())
  <div class="card create">
     <div class="content">
       <div class="header">Create a new book</div>
@@ -88,9 +92,9 @@ body {
 @else
 @foreach($books as $book)
 
-  <div class="card editpage">
+  <div class="card editpage" data-id="{{$book->id}}">
     <div class="content">
-      <div class="header">Title:{{$book->title}}</div>
+      <div class="header">{{$book->title}}</div>
       <div class="meta">
         @if($book->type==1)
         Novel
@@ -99,17 +103,17 @@ body {
         @endif
       </div>
       <p class="description">
-        Desciption of the novel. 
+        {{$book->description}}
       </p>
     </div>
     <div class="extra content">
       <span class="right floated">
         <i class="wait icon"></i>
-        Created date<br>a
+        Created date<br>{{date('d M Y', strtotime($book->created_at))}}
       </span>
-      <span class="left floated">
+      <span class="left floated"> 
         <i class="write icon"></i>
-        Last Update<br>a
+        Last Update<br>{{date('d M Y', strtotime($book->updated_at))}}
       </span>
     </div>
   </div>
@@ -121,49 +125,45 @@ body {
  </div>
 
  <!-- modal -->
-<div method="POST" action="/test" accept-charset="UTF-8"><input name="_token" type="hidden" value="WmM17NgfhBkAT2OwFMuPQ9afslVpMVfhpcayEneU">
  <div class="ui modal">
-  <i class="close icon"></i>
-
-  <div class="header">
-    Create New Project
-  </div>
-  <div class="content">
-    <!-- Form Area begin -->
-    <form class="ui form">
-  <div class="fields">
-  <div class="twelve wide field">
-    <label>Title</label>
-    <input name="title" placeholder="Enter the book's title here" type="text">
-  </div>
-  <div class="two wide field">
-      <label>Type</label>
-      <div class="ui selection dropdown">
-          <input name="type" type="hidden">
-          <i class="dropdown icon"></i>
-          <div class="default text" value="1">Novel</div>
-          <div class="menu">
-              <div class="item" value="1">Novel</div>
-              <div class="item" value="2">Article</div>
-          </div>
+<div class="content">
+<form method="POST" action="\test" accept-charset="UTF-8">
+<h2>Create New Project</h2><input name="_token" type="hidden" value="{{ csrf_token() }}">
+<div class="ui form">
+  <h4>Name:</h4><input type="text" name="title">
+</div><br>
+<div class="ui form">
+   <div class="inline fields">
+    <h4>Please select type of your project:</h4><hr/>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input name="type" checked="checked" type="radio" value="1">
+        <label><font size="+1">Novel</font></label>
       </div>
-  </div>
-  </div>
-   <div class="sixteen wide field">
-    <label>Description</label>
-    <textarea name="description"></textarea>
-  </div>
-</form>
-    <!-- Form Area end -->
-  </div>
-  <div class="actions">
+    </div>
+    <div class="field">
+      <div class="ui radio checkbox">
+        <input name="type" type="radio" value="2">
+        <label><font size="+1">Article</font></label>
+      </div>
+    </div>
+    </div>
+</div>
+<div class="ui form">
+ <h4>Description:</h4>
+ <textarea rows="10" name="description">
+ </textarea>
+</div>
+ <div class="actions kright"><br>
     <div class="ui black deny button">
       Cancel
     </div>
     <input class="ui positive button" type="submit" value="Create">
   </div>
+</form>
 </div>
-</div>
+ </div>
+
 @stop
 
 @section('js')
@@ -182,7 +182,7 @@ $('.create').on('click',function(){
 });
 
 $('.editpage').on('click',function(){
-  location.href = "/novel";
+  location.href = "/novel/"+ $(this).attr('data-id');
 });
 
 $('.dropdown').dropdown();
