@@ -14,9 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('test',function(){
-	return view('samplepage');
-});
+Route::get('test',"PagesController@test");
 Route::get('home',"PagesController@homepage");
 Route::get('novel',"PagesController@novel");
 Route::get('article',"PagesController@article");
+
+Route::post('test',"PagesController@create");
+Route::post('home',"PagesController@create");

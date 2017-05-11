@@ -1,6 +1,14 @@
-@extends('_share')
-@section('style')
-html, body {
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Qwriter</title>
+
+        <link href="Qwriter_files/css.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="Qwriter_files/semantic.css">
+<script src="Qwriter_files/jquery-3.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="Qwriter_files/semantic.js"></script>
+        <style>
+        html, body {
         height: 100%;
             }
 
@@ -39,10 +47,10 @@ body {
   margin:auto;
 }
 
-@stop
-
-@section('content')
-
+        </style>
+    </head>
+    <body class="pushable">
+        
 
 
 
@@ -60,44 +68,16 @@ body {
  <div class="container_center">
    
 
-  <img class="ui top aligned centered tiny image" src="/img/q.png"></img>
+  <img class="ui top aligned centered tiny image" src="Qwriter_files/q.png">
  <!-- start of container_center -->
 <div class="ui link cards">
-@if(is_null($books))
- <div class="card create">
-    <div class="content">
-      <div class="header">Create a new book</div>
-      <div class="meta">
-        Qwriter present
-      </div>
-      <p class="description">
-       Qwriter is a brilliant web application designed to help writer to write and manage their ideas before their writing.
-      </p>
-    </div>
-    <div class="extra content">
-      <span class="right floated">
-        <i class="wait icon"></i>
-        Created date<br>In Process
-      </span>
-      <span class="left floated">
-        <i class="write icon"></i>
-        Last Update<br>In Process
-      </span>
-    </div>
-  </div>
-@else
-@foreach($books as $book)
 
   <div class="card editpage">
     <div class="content">
-      <div class="header">Title:{{$book->title}}</div>
+      <div class="header">Title:My First Novel</div>
       <div class="meta">
-        @if($book->type==1)
-        Novel
-        @elseif($book->type==2)
-        Article
-        @endif
-      </div>
+                Novel
+              </div>
       <p class="description">
         Desciption of the novel. 
       </p>
@@ -113,8 +93,28 @@ body {
       </span>
     </div>
   </div>
-@endforeach
-@endif
+
+  <div class="card editpage">
+    <div class="content">
+      <div class="header">Title:My First Book</div>
+      <div class="meta">
+                Novel
+              </div>
+      <p class="description">
+        Desciption of the novel. 
+      </p>
+    </div>
+    <div class="extra content">
+      <span class="right floated">
+        <i class="wait icon"></i>
+        Created date<br>a
+      </span>
+      <span class="left floated">
+        <i class="write icon"></i>
+        Last Update<br>a
+      </span>
+    </div>
+  </div>
 </div>
 <!-- end of container_center -->         
   </div>
@@ -136,11 +136,11 @@ body {
   </div>
   <div class="two wide field">
       <label>Type</label>
-      <div class="ui selection dropdown">
+      <div class="ui selection dropdown" tabindex="0">
           <input name="type" type="hidden">
-          <i class="dropdown icon"></i>
+          <i class="dropdown icon" tabindex="0"><div class="menu" tabindex="-1"></div></i>
           <div class="default text">Type</div>
-          <div class="menu">
+          <div class="menu" tabindex="-1">
               <div class="item" data-value="1">Novel</div>
               <div class="item" data-value="0">Article</div>
           </div>
@@ -164,10 +164,9 @@ body {
     </div>
   </div>
 </div>
-@stop
-
-@section('js')
-$(document).mousemove(function(event){
+    
+<script type="text/javascript">
+    $(document).mousemove(function(event){
     if(event.pageY>$('.container').height()-30){
     $('.ui.sidebar').sidebar('setting', 'transition', 'push').sidebar('show');
 }
@@ -187,4 +186,6 @@ $('.editpage').on('click',function(){
 
 $('.dropdown').dropdown();
 
-@stop
+</script>
+
+</body></html>

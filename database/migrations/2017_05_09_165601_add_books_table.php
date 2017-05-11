@@ -16,6 +16,7 @@ class AddBooksTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('type');
+            $table->text('description');
             $table->timestamps();
         });
     }

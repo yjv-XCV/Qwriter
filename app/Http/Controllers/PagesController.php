@@ -10,7 +10,8 @@ class PagesController extends Controller
 {
     //
     public function homepage(){
-    	return view('homepage');
+        $books = \App\Book::all();
+    	return view('homepage',compact('books'));
     }
 
     public function novel(){
@@ -18,6 +19,17 @@ class PagesController extends Controller
     }
     
     public function article(){
-    	return view('article');
+        return view('article');
+    }
+
+    public function test(){
+        $books = \App\Book::all();
+    	return view('samplepage',compact('books'));
+    }
+
+    public function create(){
+        $input = Requests::all();
+
+        return $input;
     }
 }
