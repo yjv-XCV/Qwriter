@@ -48,39 +48,20 @@ body {
 
 
 
-<div class="ui grey inverted vertical sidebar labeled icon menu">
+<div class="ui grey inverted vertical major sidebar labeled icon menu">
     <a class="item" href="\home">
       <i class="home icon"></i>
       Home
     </a>
-    <a class="active item" data-tab="overview">
-      <i class="book icon"></i>
-      Overview
-    </a>
-    <a class="item" data-tab="characters">
-      <i class="street view icon"></i>
-      Characters
-    </a>
-    <a class="item" data-tab="locations">
-      <i class="marker icon"></i>
-      Locations
-    </a>
-    <a class="item" data-tab="scenes">
-      <i class="unhide icon"></i>
-      Scenes
-    </a>
-    <a class="item" data-tab="histories">
-      <i class="wait icon"></i>
-      Histories
-    </a>
-    <a class="item" data-tab="items">
-      <i class="diamond icon"></i>
-      Items
-    </a>
-    <a class="item" data-tab="brainstorm">
-      <i class="spinner icon"></i>
-      Brain Storm
-    </a>
+    @include('_sideTabButton',['tabText'=>'Overview'],['iconType'=>'book'])
+    @include('_sideTabButton',['tabText'=>'Characters'],['iconType'=>'street view'])
+    @include('_sideTabButton',['tabText'=>'Locations'],['iconType'=>'marker'])
+    @include('_sideTabButton',['tabText'=>'Scenes'],['iconType'=>'unhide'])
+    @include('_sideTabButton',['tabText'=>'Histories'],['iconType'=>'wait'])
+    @include('_sideTabButton',['tabText'=>'Items'],['iconType'=>'diamond'])
+    @include('_sideTabButton',['tabText'=>'Brainstorms'],['iconType'=>'spinner'])
+    
+   
     <a class="item delete">
       <i class="trash icon"></i>
       Delete
@@ -91,27 +72,16 @@ body {
  <div class="container pusher">
  <div class="container_center">
    <!-- begin of container_center -->
-   <div class="ui bottom attached active tab segment" data-tab="overview">
-  overview
+    <div class="ui bottom attached active tab segment" data-tab="n/a">
+  <h1> {{$book->title}}</h1>
 </div>
-<div class="ui bottom attached tab segment" data-tab="characters">
-  characters
-</div>
-<div class="ui bottom attached tab segment" data-tab="locations">
-  locations
-</div>
-<div class="ui bottom attached tab segment" data-tab="scenes">
-  scenes
-</div>
-<div class="ui bottom attached tab segment" data-tab="histories">
-  histories
-</div>
-<div class="ui bottom attached tab segment" data-tab="items">
-  items
-</div>
-<div class="ui bottom attached tab segment" data-tab="brainstorm">
-  brain storm
-</div>
+  @include('_cardDisplay',['tabValue'=>'Overview'])
+  @include('_cardDisplay',['tabValue'=>'Characters'])
+  @include('_cardDisplay',['tabValue'=>'Locations'])
+  @include('_cardDisplay',['tabValue'=>'Scenes'])
+  @include('_cardDisplay',['tabValue'=>'Histories'])
+  @include('_cardDisplay',['tabValue'=>'Items'])
+  @include('_cardDisplay',['tabValue'=>'Brainstorms'])
 <!-- end of container_center -->         
   </div>
  </div>
@@ -144,10 +114,10 @@ body {
 @section('js')
 $(document).mousemove(function(event){
     if(event.pageX<30){
-    $('.ui.sidebar').sidebar('setting', 'transition', 'push').sidebar('show');
+    $('.ui.major.sidebar').sidebar('setting', 'transition', 'push').sidebar('show');
 }
   if(event.pageX>300){
-    $('.ui.sidebar').sidebar('setting', 'transition', 'push').sidebar('hide');
+    $('.ui.major.sidebar').sidebar('setting', 'transition', 'push').sidebar('hide');
 }
   
 });

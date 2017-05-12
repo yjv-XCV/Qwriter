@@ -19,6 +19,26 @@ class AddCardsTable extends Migration
             $table->integer('card_id')->unsigned();
             $table->integer('type');
             $table->timestamps();
+            /*type
+            **
+            **  0 -> Synopsis
+            **  1 -> Settings
+            **  2 -> Characters
+            **  3 -> Locations
+            **  4 -> Scenes
+            **  5 -> Histories
+            **  6 -> Items
+            **  7 -> Brainstorms
+            **  8 -> SubLocations
+            **  9 -> 
+            ** 10 -> Summary
+            ** 11 -> Ideas
+            ** 12 -> Quotes       (Sub Idea)
+            ** 13 -> Facts        (Sub Idea)
+            ** 14 -> Explanations (Sub Idea)
+            ** 15 -> Brainstorms
+            ** 16 -> References
+            */
 
             $table->foreign('book_id')
                   ->references('id')
