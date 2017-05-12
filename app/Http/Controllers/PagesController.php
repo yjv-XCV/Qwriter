@@ -12,20 +12,21 @@ class PagesController extends Controller
 {
     //
     public function homepage(){
-        $books = \App\Book::all();
+        $books = Book::all();
     	return view('homepage',compact('books'));
     }
 
-    public function novel(){
-    	return view('novel');
+    public function novel($id){
+        $book = Book::find($id);
+    	return view('samplepage',compact('book'));
     }
     
-    public function article(){
+    public function article($id){
         return view('article');
     }
 
     public function test(){
-        $books = \App\Book::all();
+        $books = Book::all();
         // dd($books);
     	return view('samplepage',compact('books'));
     }
@@ -33,6 +34,13 @@ class PagesController extends Controller
     public function create(){
         $input = Request::all();
         Book::create($input);
-        return redirect('test');
+        return redirect('home');
+    }
+
+    public function delete(){
+        $input = Request::all();
+        $book = Book::find($input["id"]);
+        $book->delete(); 
+        return redirect('home');
     }
 }

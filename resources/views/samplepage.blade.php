@@ -14,6 +14,8 @@ body {
 .container {
 
     text-align: center;
+    width:100%;
+    height:100%;
     display: table-cell;
     vertical-align: middle;
     background-image: url("/img/background.jpg")!important;
@@ -39,10 +41,6 @@ body {
   margin:auto;
 }
 
-.kright{
-  text-align:right;
-}
-
 @stop
 
 @section('content')
@@ -50,141 +48,115 @@ body {
 
 
 
-<div class="ui bottom thin sidebar menu">
-    <a class="item create">
-      <i class="write icon"></i>
-      Create New Project
+<div class="ui grey inverted vertical sidebar labeled icon menu">
+    <a class="item" href="\home">
+      <i class="home icon"></i>
+      Home
+    </a>
+    <a class="active item" data-tab="overview">
+      <i class="book icon"></i>
+      Overview
+    </a>
+    <a class="item" data-tab="characters">
+      <i class="street view icon"></i>
+      Characters
+    </a>
+    <a class="item" data-tab="locations">
+      <i class="marker icon"></i>
+      Locations
+    </a>
+    <a class="item" data-tab="scenes">
+      <i class="unhide icon"></i>
+      Scenes
+    </a>
+    <a class="item" data-tab="histories">
+      <i class="wait icon"></i>
+      Histories
+    </a>
+    <a class="item" data-tab="items">
+      <i class="diamond icon"></i>
+      Items
+    </a>
+    <a class="item" data-tab="brainstorm">
+      <i class="spinner icon"></i>
+      Brain Storm
+    </a>
+    <a class="item delete">
+      <i class="trash icon"></i>
+      Delete
     </a>
   </div>
 
-  <!-- <div class="pusher"> -->
-    <!-- Site content !-->
 
  <div class="container pusher">
  <div class="container_center">
-   
-
-  <img class="ui top aligned centered tiny image" src="/img/q.png"></img>
- <!-- start of container_center -->
-<div class="ui link cards">
-@if($books->isEmpty())
- <div class="card create">
-    <div class="content">
-      <div class="header">Create a new book</div>
-      <div class="meta">
-        Qwriter present
-      </div>
-      <p class="description">
-       Qwriter is a brilliant web application designed to help writer to write and manage their ideas before their writing.
-      </p>
-    </div>
-    <div class="extra content">
-      <span class="right floated">
-        <i class="wait icon"></i>
-        Created date<br>In Process
-      </span>
-      <span class="left floated">
-        <i class="write icon"></i>
-        Last Update<br>In Process
-      </span>
-    </div>
-  </div>
-@else
-@foreach($books as $book)
-
-  <div class="card editpage" data-id="{{$book->id}}">
-    <div class="content">
-      <div class="header">{{$book->title}}</div>
-      <div class="meta">
-        @if($book->type==1)
-        Novel
-        @elseif($book->type==2)
-        Article
-        @endif
-      </div>
-      <p class="description">
-        {{$book->description}}
-      </p>
-    </div>
-    <div class="extra content">
-      <span class="right floated">
-        <i class="wait icon"></i>
-        Created date<br>{{date('d M Y', strtotime($book->created_at))}}
-      </span>
-      <span class="left floated"> 
-        <i class="write icon"></i>
-        Last Update<br>{{date('d M Y', strtotime($book->updated_at))}}
-      </span>
-    </div>
-  </div>
-@endforeach
-@endif
+   <!-- begin of container_center -->
+   <div class="ui bottom attached active tab segment" data-tab="overview">
+  overview
+</div>
+<div class="ui bottom attached tab segment" data-tab="characters">
+  characters
+</div>
+<div class="ui bottom attached tab segment" data-tab="locations">
+  locations
+</div>
+<div class="ui bottom attached tab segment" data-tab="scenes">
+  scenes
+</div>
+<div class="ui bottom attached tab segment" data-tab="histories">
+  histories
+</div>
+<div class="ui bottom attached tab segment" data-tab="items">
+  items
+</div>
+<div class="ui bottom attached tab segment" data-tab="brainstorm">
+  brain storm
 </div>
 <!-- end of container_center -->         
   </div>
  </div>
 
- <!-- modal -->
- <div class="ui modal">
-<div class="content">
-<form method="POST" action="\test" accept-charset="UTF-8">
-<h2>Create New Project</h2><input name="_token" type="hidden" value="{{ csrf_token() }}">
-<div class="ui form">
-  <h4>Name:</h4><input type="text" name="title">
-</div><br>
-<div class="ui form">
-   <div class="inline fields">
-    <h4>Please select type of your project:</h4><hr/>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input name="type" checked="checked" type="radio" value="1">
-        <label><font size="+1">Novel</font></label>
-      </div>
-    </div>
-    <div class="field">
-      <div class="ui radio checkbox">
-        <input name="type" type="radio" value="2">
-        <label><font size="+1">Article</font></label>
-      </div>
-    </div>
-    </div>
-</div>
-<div class="ui form">
- <h4>Description:</h4>
- <textarea rows="10" name="description">
- </textarea>
-</div>
- <div class="actions kright"><br>
-    <div class="ui black deny button">
+
+ <!-- Deleting -->
+ <div class="ui basic modal">
+  <div class="ui icon header">
+    <i class="trash icon"></i>
+    <br>
+    <h2>Are you sure you want to delete this book?</h2>
+  </div>
+  <div class="actions">
+ <form action="\home" method="POST"><input name="_token" type="hidden" value="{{ csrf_token() }}">
+  <input name="id" type="hidden" value="{{$book->id}}">
+    <div class="ui red basic cancel inverted button">
+      <i class="remove icon"></i>
       Cancel
     </div>
-    <input class="ui positive button" type="submit" value="Create">
+    <button class="ui red ok inverted button" type="submit">
+      <i class="trash icon"></i>
+      Delete
+      </button>
+  </form>
   </div>
-</form>
 </div>
- </div>
 
 @stop
 
 @section('js')
 $(document).mousemove(function(event){
-    if(event.pageY>$('.container').height()-30){
+    if(event.pageX<30){
     $('.ui.sidebar').sidebar('setting', 'transition', 'push').sidebar('show');
 }
-  if(event.pageY<$('.container').height()-70){
+  if(event.pageX>300){
     $('.ui.sidebar').sidebar('setting', 'transition', 'push').sidebar('hide');
 }
   
 });
 
-$('.create').on('click',function(){
-  $('.ui.modal').modal('show');
-});
-
-$('.editpage').on('click',function(){
-  location.href = "/novel/"+ $(this).attr('data-id');
+$('.delete').on('click',function(){
+  $('.ui.basic.modal').modal('show');
 });
 
 $('.dropdown').dropdown();
+$('.menu .item').tab();
 
 @stop

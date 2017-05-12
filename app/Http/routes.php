@@ -14,10 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('test',"PagesController@test");
+Route::get('test/{id}',"PagesController@novel");
 Route::get('home',"PagesController@homepage");
-Route::get('novel',"PagesController@novel");
-Route::get('article',"PagesController@article");
+Route::get('novel/{id}',"PagesController@novel");
+Route::get('article/{id}',"PagesController@article");
 
 Route::post('test',"PagesController@create");
 Route::post('home',"PagesController@create");
+
+Route::post('home',"PagesController@delete");

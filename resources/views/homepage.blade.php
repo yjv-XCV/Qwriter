@@ -158,7 +158,10 @@ body {
     <div class="ui black deny button">
       Cancel
     </div>
-    <input class="ui positive button" type="submit" value="Create">
+    <button class="ui positive right labeled icon button" type="submit">
+      <i class="checkmark icon"></i>
+      Create
+  </button>
   </div>
 </form>
 </div>
