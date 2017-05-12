@@ -7,6 +7,7 @@ use Request;
 
 use App\Http\Requests;
 use App\Book;
+use App\Card;
 
 class PagesController extends Controller
 {
@@ -18,30 +19,28 @@ class PagesController extends Controller
 
     public function novel($id){
         $book = Book::find($id);
-        $cards = $book->cards();
-        $synopsis = $cards->where('type', 0);
-        $settings = $cards->where('type', 1);
-        $characters = $cards->where('type', 2);
-        $locations = $cards->where('type', 3);
-        $scenes = $cards->where('type', 4);
-        $histories = $cards->where('type', 5);
-        $items = $cards->where('type', 6);
-        $brainstorms = $cards->where('type', 7);
-        $sublocations = $cards->where('type', 8);
+        $synopsis = Card::where('book_id',$id)->where('type', 0)->get();
+        $settings = Card::where('book_id',$id)->where('type', 1)->get();
+        $characters = Card::where('book_id',$id)->where('type', 2)->get();
+        $locations = Card::where('book_id',$id)->where('type', 3)->get();
+        $scenes = Card::where('book_id',$id)->where('type', 4)->get();
+        $histories = Card::where('book_id',$id)->where('type', 5)->get();
+        $items = Card::where('book_id',$id)->where('type', 6)->get();
+        $brainstorms = Card::where('book_id',$id)->where('type', 7)->get();
+        $sublocations = Card::where('book_id',$id)->where('type', 8)->get();
         return view('samplepage',compact('book','synopsis','settings','characters','locations','scenes','histories','items','brainstorms','sublocations'));
     	// return view('novel',compact('book'));
     }
     
     public function article($id){
         $book = Book::find($id);
-        $cards = $book->cards();
-        $summary = $cards->where('type', 10);
-        $ideas = $cards->where('type', 11);
-        $quotes = $cards->where('type', 12);
-        $facts = $cards->where('type', 13);
-        $explanations = $cards->where('type', 14);
-        $brainstorms = $cards->where('type', 15);
-        $references = $cards->where('type', 16);
+        $summary = Card::where('book_id',$id)->where('type', 10)->get();
+        $ideas = Card::where('book_id',$id)->where('type', 11)->get();
+        $quotes = Card::where('book_id',$id)->where('type', 12)->get();
+        $facts = Card::where('book_id',$id)->where('type', 13)->get();
+        $explanations = Card::where('book_id',$id)->where('type', 14)->get();
+        $brainstorms = Card::where('book_id',$id)->where('type', 15)->get();
+        $references = Card::where('book_id',$id)->where('type', 16)->get();
         return view('article',compact('book','summary','ideas','quotes','facts','explanations','brainstorms','references'));
     }
 

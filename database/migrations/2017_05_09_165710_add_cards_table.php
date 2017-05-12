@@ -16,7 +16,7 @@ class AddCardsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('book_id')->unsigned();
-            $table->integer('card_id')->unsigned();
+            $table->integer('card_id')->unsigned()->nullable();
             $table->integer('type');
             $table->timestamps();
             /*type

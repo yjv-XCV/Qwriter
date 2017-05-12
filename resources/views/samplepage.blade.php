@@ -53,13 +53,14 @@ body {
       <i class="home icon"></i>
       Home
     </a>
-    @include('_sideTabButton',['tabText'=>'Overview'],['iconType'=>'book'])
-    @include('_sideTabButton',['tabText'=>'Characters'],['iconType'=>'street view'])
-    @include('_sideTabButton',['tabText'=>'Locations'],['iconType'=>'marker'])
-    @include('_sideTabButton',['tabText'=>'Scenes'],['iconType'=>'unhide'])
-    @include('_sideTabButton',['tabText'=>'Histories'],['iconType'=>'wait'])
-    @include('_sideTabButton',['tabText'=>'Items'],['iconType'=>'diamond'])
-    @include('_sideTabButton',['tabText'=>'Brainstorms'],['iconType'=>'spinner'])
+
+    @include('_sideTabButton',['tabText'=>'Overview','iconType'=>'book'])
+    @include('_sideTabButton',['tabText'=>'Characters','iconType'=>'street view'])
+    @include('_sideTabButton',['tabText'=>'Locations','iconType'=>'marker'])
+    @include('_sideTabButton',['tabText'=>'Scenes','iconType'=>'unhide'])
+    @include('_sideTabButton',['tabText'=>'Histories','iconType'=>'wait'])
+    @include('_sideTabButton',['tabText'=>'Items','iconType'=>'diamond'])
+    @include('_sideTabButton',['tabText'=>'Brainstorms','iconType'=>'spinner'])
     
    
     <a class="item delete">
@@ -75,13 +76,13 @@ body {
     <div class="ui bottom attached active tab segment" data-tab="n/a">
   <h1> {{$book->title}}</h1>
 </div>
-  @include('_cardDisplay',['tabValue'=>'Overview'])
-  @include('_cardDisplay',['tabValue'=>'Characters'])
-  @include('_cardDisplay',['tabValue'=>'Locations'])
-  @include('_cardDisplay',['tabValue'=>'Scenes'])
-  @include('_cardDisplay',['tabValue'=>'Histories'])
-  @include('_cardDisplay',['tabValue'=>'Items'])
-  @include('_cardDisplay',['tabValue'=>'Brainstorms'])
+  @include('_cardDisplay',['tabValue'=>'Overview',    'book'=>$book,'display'=>2,'cardsA'=>$synopsis,'cardsB'=>$settings])
+  @include('_cardDisplay',['tabValue'=>'Characters',  'book'=>$book,'display'=>1,'cards'=>$characters])
+  @include('_cardDisplay',['tabValue'=>'Locations',   'book'=>$book,'display'=>3,'cards'=>$locations])
+  @include('_cardDisplay',['tabValue'=>'Scenes',      'book'=>$book,'display'=>1,'cards'=>$scenes])
+  @include('_cardDisplay',['tabValue'=>'Histories',   'book'=>$book,'display'=>1,'cards'=>$histories])
+  @include('_cardDisplay',['tabValue'=>'Items',       'book'=>$book,'display'=>1,'cards'=>$items])
+  @include('_cardDisplay',['tabValue'=>'Brainstorms', 'book'=>$book,'display'=>1,'cards'=>$brainstorms])
 <!-- end of container_center -->         
   </div>
  </div>
