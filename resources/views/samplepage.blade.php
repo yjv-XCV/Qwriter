@@ -41,6 +41,10 @@ body {
   margin:auto;
 }
 
+.descriptionTab{
+  
+}
+
 @stop
 
 @section('content')
@@ -71,10 +75,11 @@ body {
 
 
  <div class="container pusher">
- <div class="container_center">
+ <div class="">
    <!-- begin of container_center -->
-    <div class="ui bottom attached active tab segment" data-tab="n/a">
+    <div class="ui active tab segment" data-tab="n/a">
   <h1> {{$book->title}}</h1>
+  <h4>Move your mouse to left for viewing the details.</h4>
 </div>
   @include('_cardDisplay',['tabValue'=>'Overview',    'book'=>$book,'display'=>2,'cardsA'=>$synopsis,'cardsB'=>$settings])
   @include('_cardDisplay',['tabValue'=>'Characters',  'book'=>$book,'display'=>1,'cards'=>$characters])
