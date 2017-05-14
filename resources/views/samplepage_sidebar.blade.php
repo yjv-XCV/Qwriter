@@ -1,36 +1,51 @@
 @extends('_share')
 
 @section('content')
- <div class="ui thin sidebar inverted vertical menu">
-    <div>
-    	BigBig<br>Gap
-    </div>
-    <a class="item">
-      Overview
-    </a>
-    <a class="item">
-      Characters
-    </a>
-    <a class="item">
-      Locations
-    </a>
-    <a class="item">
-      Scenes
-    </a>
-    <a class="item">
-      History
-    </a>
-    <a class="item">
-      Items
-    </a>
+ <div class="ui pointing secondary menu">
+  <a class="active item" data-tab="first">First</a>
+  <a class="item" data-tab="second">Second</a>
+  <a class="item" data-tab="third">Third</a>
+</div>
+<div class="ui active tab segment" data-tab="first">
+  <div class="ui top attached tabular menu">
+    <a class="active item" data-tab="first/a">1A</a>
+    <a class="item" data-tab="first/b">1B</a>
+    <a class="item" data-tab="first/c">1C</a>
   </div>
-  <div class="pusher">
-  <button>Click Me</button>
+  <div class="ui bottom attached tab" data-tab="first/a">1A</div>
+  <div class="ui bottom attached tab" data-tab="first/b">1B</div>
+  <div class="ui bottom attached tab" data-tab="first/c">1C</div>
+</div>
+<div class="ui tab segment" data-tab="second">
+  <div class="ui top attached tabular menu">
+    <a class="item" data-tab="second/a">2A</a>
+    <a class="item" data-tab="second/b">2B</a>
+    <a class="item" data-tab="second/c">2C</a>
   </div>
+  <div class="ui bottom attached tab" data-tab="second/a">2A</div>
+  <div class="ui bottom attached tab" data-tab="second/b">2B</div>
+  <div class="ui bottom attached tab" data-tab="second/c">2C</div>
+</div>
+<div class="ui tab segment" data-tab="third">
+  <div class="ui top attached tabular menu">
+    <a class="item" data-tab="third/a">3A</a>
+    <a class="item" data-tab="third/b">3B</a>
+    <a class="item" data-tab="third/c">3C</a>
+  </div>
+  <div class="ui bottom attached tab" data-tab="third/a">3A</div>
+  <div class="ui bottom attached tab" data-tab="third/b">3B</div>
+  <div class="ui bottom attached tab" data-tab="third/c">3C</div>
+</div>
 @stop
 
 @section('js')
 $('button').on('click',function(){
 	$('.ui.sidebar').sidebar('toggle');
 });
+
+$('.menu .item')
+  .tab({
+    
+  })
+;
 @stop

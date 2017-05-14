@@ -127,7 +127,7 @@ body {
  <!-- modal -->
  <div class="ui modal">
 <div class="content">
-<form method="POST" action="\test" accept-charset="UTF-8">
+<form method="POST" action="\home" accept-charset="UTF-8">
 <h2>Create New Project</h2><input name="_token" type="hidden" value="{{ csrf_token() }}">
 <div class="ui form">
   <h4>Name:</h4><input type="text" name="title">

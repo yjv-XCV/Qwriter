@@ -50,6 +50,12 @@ class PagesController extends Controller
         return redirect('home');
     }
 
+    public function createCard($id){
+        $input = Request::all();
+        Card::create($input);
+        return redirect()->action('PagesController@novel',['id'=>$id]);
+    }
+
     public function delete(){
         $input = Request::all();
         $book = Book::find($input["id"]);

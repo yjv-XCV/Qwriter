@@ -41,9 +41,10 @@ body {
   margin:auto;
 }
 
-.descriptionTab{
-  
+.kright{
+  text-align:right;
 }
+
 
 @stop
 
@@ -58,14 +59,14 @@ body {
       Home
     </a>
 
-    @include('_sideTabButton',['tabText'=>'Overview','iconType'=>'book'])
-    @include('_sideTabButton',['tabText'=>'Characters','iconType'=>'street view'])
-    @include('_sideTabButton',['tabText'=>'Locations','iconType'=>'marker'])
-    @include('_sideTabButton',['tabText'=>'Scenes','iconType'=>'unhide'])
-    @include('_sideTabButton',['tabText'=>'Histories','iconType'=>'wait'])
-    @include('_sideTabButton',['tabText'=>'Items','iconType'=>'diamond'])
-    @include('_sideTabButton',['tabText'=>'Brainstorms','iconType'=>'spinner'])
-    
+    @include('_sideTabButton',  ['tabText'=>'Overview','iconType'=>'book'])
+    @include('_sideTabButton',  ['tabText'=>'Characters','iconType'=>'street view'])
+    @include('_sideTabButton',  ['tabText'=>'Locations','iconType'=>'marker'])
+    @include('_sideTabButton',  ['tabText'=>'Scenes','iconType'=>'unhide'])
+    @include('_sideTabButton',  ['tabText'=>'Histories','iconType'=>'wait'])
+    @include('_sideTabButton',  ['tabText'=>'Items','iconType'=>'diamond'])
+    @include('_sideTabButton',  ['tabText'=>'Brainstorms','iconType'=>'spinner'])
+   
    
     <a class="item delete">
       <i class="trash icon"></i>
@@ -75,33 +76,31 @@ body {
 
 
  <div class="container pusher">
- <div class="">
    <!-- begin of container_center -->
-    <div class="ui active tab segment" data-tab="n/a">
+    <div class="ui active tab" data-tab="n/a">
   <h1> {{$book->title}}</h1>
   <h4>Move your mouse to left for viewing the details.</h4>
 </div>
-  @include('_cardDisplay',['tabValue'=>'Overview',    'book'=>$book,'display'=>2,'cardsA'=>$synopsis,'cardsB'=>$settings])
-  @include('_cardDisplay',['tabValue'=>'Characters',  'book'=>$book,'display'=>1,'cards'=>$characters])
-  @include('_cardDisplay',['tabValue'=>'Locations',   'book'=>$book,'display'=>3,'cards'=>$locations])
-  @include('_cardDisplay',['tabValue'=>'Scenes',      'book'=>$book,'display'=>1,'cards'=>$scenes])
-  @include('_cardDisplay',['tabValue'=>'Histories',   'book'=>$book,'display'=>1,'cards'=>$histories])
-  @include('_cardDisplay',['tabValue'=>'Items',       'book'=>$book,'display'=>1,'cards'=>$items])
-  @include('_cardDisplay',['tabValue'=>'Brainstorms', 'book'=>$book,'display'=>1,'cards'=>$brainstorms])
+  @include('_cardDisplay',['tabValue'=>'Overview',   'book'=>$book,'display'=>2,'cardsA'=>$synopsis,'cardsB'=>$settings])
+  @include('_cardDisplay',['tabValue'=>'Characters', 'book'=>$book,'display'=>1,'cards'=>$characters])
+  @include('_cardDisplay',['tabValue'=>'Locations',  'book'=>$book,'display'=>3,'cards'=>$locations])
+  @include('_cardDisplay',['tabValue'=>'Scenes',     'book'=>$book,'display'=>1,'cards'=>$scenes])
+  @include('_cardDisplay',['tabValue'=>'Histories',  'book'=>$book,'display'=>1,'cards'=>$histories])
+  @include('_cardDisplay',['tabValue'=>'Items',      'book'=>$book,'display'=>1,'cards'=>$items])
+  @include('_cardDisplay',['tabValue'=>'Brainstorms','book'=>$book,'display'=>1,'cards'=>$brainstorms])  
 <!-- end of container_center -->         
-  </div>
  </div>
 
 
  <!-- Deleting -->
- <div class="ui basic modal">
+ <div class="ui basic del modal">
   <div class="ui icon header">
     <i class="trash icon"></i>
     <br>
     <h2>Are you sure you want to delete this book?</h2>
   </div>
   <div class="actions">
- <form action="\home" method="POST"><input name="_token" type="hidden" value="{{ csrf_token() }}">
+ <form action="\home\delete" method="POST"><input name="_token" type="hidden" value="{{ csrf_token() }}">
   <input name="id" type="hidden" value="{{$book->id}}">
     <div class="ui red basic cancel inverted button">
       <i class="remove icon"></i>
@@ -122,14 +121,42 @@ $(document).mousemove(function(event){
     if(event.pageX<30){
     $('.ui.major.sidebar').sidebar('setting', 'transition', 'push').sidebar('show');
 }
-  if(event.pageX>300){
+  if(event.pageX>150){
     $('.ui.major.sidebar').sidebar('setting', 'transition', 'push').sidebar('hide');
 }
   
 });
 
 $('.delete').on('click',function(){
-  $('.ui.basic.modal').modal('show');
+  $('.ui.basic.del.modal').modal('show');
+});
+
+$('.Overview').on('click',function(){
+  $('.ui.basic.modal.Overview').modal('show');
+});
+
+$('.Characters').on('click',function(){
+  $('.ui.basic.modal.Characters').modal('show');
+});
+
+$('.Locations').on('click',function(){
+  $('.ui.basic.modal.Locations').modal('show');
+});
+
+$('.Scenes').on('click',function(){
+  $('.ui.basic.modal.Scenes').modal('show');
+});
+
+$('.Histories').on('click',function(){
+  $('.ui.basic.modal.Histories').modal('show');
+});
+
+$('.Items').on('click',function(){
+  $('.ui.basic.modal.Items').modal('show');
+});
+
+$('.Brainstorm').on('click',function(){
+  $('.ui.basic.modal.Brainstorms').modal('show');
 });
 
 $('.dropdown').dropdown();

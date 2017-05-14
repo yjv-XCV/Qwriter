@@ -19,7 +19,11 @@ Route::get('home',"PagesController@homepage");
 Route::get('novel/{id}',"PagesController@novel");
 Route::get('article/{id}',"PagesController@article");
 
-Route::post('test',"PagesController@create");
-Route::post('home',"PagesController@create");
+Route::get('test',function(){
+	return view('samplepage_sidebar');
+});
 
-Route::post('home',"PagesController@delete");
+Route::post('home',"PagesController@create");
+Route::post('home/delete',"PagesController@delete");
+Route::post('novel/{id}',"PagesController@createCard");
+Route::post('novel/{id}/delete',"PagesController@deleteCard");
