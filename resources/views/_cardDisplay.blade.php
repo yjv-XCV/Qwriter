@@ -33,15 +33,15 @@
     <!-- Site content !-->
     @if($display==1)
     @foreach($cards as $card)
-    @include('_cardDescription',['tabValue'=>$card->name])
+    @include('_cardDescription',['tabValue'=>$card->name,'card_id'=>$card->id,'book_id'=>$book->id])
     @endforeach
 
     @elseif($display==2)
     @foreach($cardsA as $card)
-    @include('_cardDescription',['tabValue'=>$card->name])
+    @include('_cardDescription',['tabValue'=>$card->name,'card_id'=>$card->id,'book_id'=>$book->id])
     @endforeach
     @foreach($cardsB as $card)
-    @include('_cardDescription',['tabValue'=>$card->name])
+    @include('_cardDescription',['tabValue'=>$card->name,'card_id'=>$card->id,'book_id'=>$book->id])
     @endforeach
 
     @elseif($display==3)

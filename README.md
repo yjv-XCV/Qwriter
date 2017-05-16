@@ -2,14 +2,13 @@ Work Checklist:
 
 Upcoming:
 Cards
--Display
--Create(first version, and newer version)
--Delete
+-Description Create(first version, and newer version)
+-Delete Card
 
 Edit
--book,card
+-book,card, description
 
-Make Connection between cards
+<!-- Make Connection between cards -->
 
 Form Validations
 

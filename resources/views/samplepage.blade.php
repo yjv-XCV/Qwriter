@@ -45,6 +45,14 @@ body {
   text-align:right;
 }
 
+.delete_button{
+  display:block;
+  position:absolute;
+  bottom:10px;
+  right:10px;
+  background-color:white;
+}
+
 
 @stop
 
@@ -129,6 +137,10 @@ $(document).mousemove(function(event){
 
 $('.delete').on('click',function(){
   $('.ui.basic.del.modal').modal('show');
+});
+
+$('.delCard').on('click',function(){
+  $('.ui.basic.del_Card.modal').modal('show');
 });
 
 $('.Overview').on('click',function(){

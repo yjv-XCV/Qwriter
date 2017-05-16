@@ -52,7 +52,7 @@ class PagesController extends Controller
 
     public function createCard($id){
         $input = Request::all();
-        if($input['card_id']==0)$input['card_id'] = null;
+        if(!empty($input['card_id']))if($input['card_id']==0)$input['card_id'] = null;
         Card::create($input);
         return redirect()->action('PagesController@novel',['id'=>$id]);
     }
@@ -62,5 +62,12 @@ class PagesController extends Controller
         $book = Book::find($input["id"]);
         $book->delete(); 
         return redirect('home');
+    }
+
+    public function deleteCard($id){
+        $input = Request::all();
+        $card = Card::find($input['id']);
+        $card->delete();
+        return redirect()->action('PagesController@novel',['id'=>$id]);
     }
 }
