@@ -18,7 +18,7 @@ body {
     height:100%;
     display: table-cell;
     vertical-align: middle;
-    background-image: url("/img/background.jpg")!important;
+    background-image: url("/img/background2.jpg")!important;
 }
 
 .container_center {
@@ -27,9 +27,22 @@ body {
     color: #000000;
 }
 
+.descriptions{
+  top:0px;
+  right:30px;
+  position:fixed;
+  height:86%;
+  width:100%;
+}
+
 .description{
-  height:380px;
-  overflow-y:auto;
+  display:inline-block;
+  float:right;
+  height:100%;
+  width:38%;
+  margin:20px 20px 20px 20px;
+  background-color:white;
+  opacity:0.5;
 }
 
 .image{
@@ -50,7 +63,6 @@ body {
   position:absolute;
   bottom:10px;
   right:10px;
-  background-color:white;
 }
 
 

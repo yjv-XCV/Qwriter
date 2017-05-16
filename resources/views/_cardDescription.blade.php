@@ -3,6 +3,14 @@
      	<button class="ui red delCard button"><i class="trash icon"></i>Delete {{$tabValue}}</button>
      	</div>
 
+    <div class="descriptions">
+      <textarea class="description" model="100">
+      </textarea>
+      <div class="description">
+      </div>
+    </div>
+
+
      	<div class="ui basic del_Card modal">
   <div class="ui icon header">
     <i class="trash icon"></i>
