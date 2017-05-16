@@ -47,26 +47,11 @@ class AddCardsTable extends Migration
 
             $table->foreign('card_id')
                   ->references('id')
-                  ->on('cards')
-                  ->onDelete('cascade');
+                  ->on('cards');
+                  // ->onDelete('cascade');
         });
 
-        Schema::create('card_card', function (Blueprint $table){
-            $table->integer('card_id')->unsigned()->index();
-            $table->foreign('card_id')
-                  ->references('id')
-                  ->on('cards')
-                  ->onDelete('cascade');
 
-            $table->integer('related_id')->unsigned()->index();
-            $table->foreign('related_id')
-                  ->references('id')
-                  ->on('cards')
-                  ->onDelete('cascade');
-
-            $table->timestamps();
-
-        });
     }
 
     /**
@@ -77,6 +62,5 @@ class AddCardsTable extends Migration
     public function down()
     {
         Schema::drop('cards');
-        Schema::drop('card_card');
     }
 }

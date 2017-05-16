@@ -29,7 +29,5 @@ class Card extends Model
     	return $this->hasMany('App\Description');
     }
 
-    public function related(){
-    	return $this->belongsToMany('App\Card', 'card_card', 'card_id','related_id');
-    }
+  
 }

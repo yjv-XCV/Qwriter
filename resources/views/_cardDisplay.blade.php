@@ -99,12 +99,12 @@
     </div>
     <div class="field">
     <div class="ui fluid selection dropdown">
-  <input name="card_id" type="hidden">
+  <input name="card_id" type="hidden" value="">
   <i class="dropdown icon"></i>
   <div class="default text">Select Country (Ignore if this is a country)</div>
   <div class="menu">
     @foreach($cards as $card)
-    <div class="item" value="{{$card->id}}">
+    <div class="item" data-value="{{$card->id}}">
       {{$card->name}}
     </div>
     @endforeach

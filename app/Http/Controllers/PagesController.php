@@ -52,6 +52,7 @@ class PagesController extends Controller
 
     public function createCard($id){
         $input = Request::all();
+        if($input['card_id']==0)$input['card_id'] = null;
         Card::create($input);
         return redirect()->action('PagesController@novel',['id'=>$id]);
     }
