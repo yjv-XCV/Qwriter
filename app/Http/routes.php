@@ -18,6 +18,9 @@ Route::get('test/{id}',"PagesController@novel");
 Route::get('home',"PagesController@homepage");
 Route::get('novel/{id}',"PagesController@novel");
 Route::get('article/{id}',"PagesController@article");
+Route::get('demo',function(){
+	return view('demo_001/demo2');
+});
 
 Route::get('test',function(){
 	return view('samplepage_sidebar');

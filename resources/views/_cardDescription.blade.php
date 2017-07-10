@@ -4,9 +4,11 @@
      	</div>
 
     <div class="descriptions">
-      <textarea class="description" model="100">
-      </textarea>
       <div class="description">
+        <h2>Version:</h2>
+      </div>
+      <div class="description">
+        <h2>Version:</h2>
       </div>
     </div>
 

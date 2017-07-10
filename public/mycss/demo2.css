@@ -1,0 +1,159 @@
+a{
+	text-decoration: none;
+	color:black;
+}
+
+a:hover{
+	color:grey;
+}
+
+h1{
+	font-size: 2.3rem;
+}
+
+h2,h3{
+	font-weight: normal;
+}
+
+h3{
+	font-size: 1.1rem;
+}
+
+h5{
+	font-size: 0.8rem;
+	line-height: 200%;
+	font-weight: normal;
+}
+
+span{
+	font-weight:bold;
+}
+
+section{
+	width: 100%;
+	clear:both;
+}
+
+
+button{
+	padding: 0.2rem 1rem;
+	margin:0px 5px;
+	border-radius: 7px;
+	border-width: 1px;
+}
+
+button.clear{
+	background-color:transparent;
+	border-color: grey;
+}
+
+button.blue{
+	background-color: #0f78db;
+	border-color: #0f78db;
+}
+
+.centered-box{
+	margin:auto;
+	text-align: center;
+	width: 60%;
+}
+.white-circle{
+	width: 20px;
+	height: 20px;
+	background: white;
+	border-radius: 10px;
+	position: relative;
+} 
+
+.arrow-right {
+	width: 0; 
+	height: 0; 
+	border-top: 3px solid transparent;
+	border-bottom: 3px solid transparent;  
+	border-left:4.5px solid black; 
+	position:absolute;
+	top: 7.7px;
+	left:8.5px;
+}
+
+.darker{
+	background-color: black;
+	opacity: 0.5;
+	z-index: 0;
+	width: 100%;
+	min-height: 100%;
+	position:absolute;
+}
+
+.float-left{
+	float:left;
+	margin:auto;
+	padding: 5px 5px;
+	height: 40px;
+}
+
+.clr{
+	clear:both;
+}
+
+.img-100{
+	width:100%;
+}
+
+.box{
+	width:40%;
+	margin: 30px;
+}
+
+#sec01{
+	background-image: url("/img/demo/education-1.jpg");
+	background-size: 100%;
+	background-position: center;
+	color:white;
+	position: relative;
+	min-height: 500px;
+}
+
+#sec01 a,a:hover{
+	color:white;
+	margin:0px 5px;
+}
+
+.headertab{
+	position:relative;
+	font-size: 0.75rem;
+}
+
+.header{
+	position: absolute;
+	padding: 20px 100px;
+	margin:0px 5px;
+}
+
+#s1h1{
+	font-size: 2rem;
+	font-weight: bold;
+	left: 0px;
+}
+
+#s1h2{
+	right: 0px;
+}
+
+.sec01.txt{
+	position: absolute;
+	padding:100px;
+	width: 67%;
+}
+
+#sec01 h1,#sec01 h3{
+	font-weight: normal;
+}
+
+/*Section 2*/
+.leftimgtxt{
+	width:100%;
+	margin-top:30px;
+	margin-left:50px;
+}
+
